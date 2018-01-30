@@ -328,7 +328,8 @@ public class EnhancedListView extends ListView {
     private int mDismissAnimationRefCount;
 
     private boolean mSwipePaused;
-    private boolean mSwiping;
+    public boolean mSwiping;
+    public boolean isSwipeStopping = false;
     private int mViewWidth = 1; // 1 and not 0 to prevent dividing by zero
     private View mSwipeDownView;
     private View mSwipeDownChild;
@@ -700,6 +701,7 @@ public class EnhancedListView extends ListView {
 
             case MotionEvent.ACTION_UP: {
                 if (mVelocityTracker == null) {
+                    isSwipeStopping = false;
                     break;
                 }
 
@@ -729,6 +731,7 @@ public class EnhancedListView extends ListView {
                             .alpha(1)
                             .setDuration(mAnimationTime)
                             .setListener(null);
+                    isSwipeStopping = false;
                 }
                 mVelocityTracker = null;
                 mDownX = 0;
