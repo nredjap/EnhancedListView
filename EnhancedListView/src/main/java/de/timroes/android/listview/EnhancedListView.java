@@ -322,7 +322,8 @@ public class EnhancedListView extends ListView {
     private int mSwipingLayout;
 
     private List<Undoable> mUndoActions = new ArrayList<Undoable>();
-    private SortedSet<PendingDismissData> mPendingDismisses = new TreeSet<PendingDismissData>();
+    // this is not good solution!
+    public SortedSet<PendingDismissData> mPendingDismisses = new TreeSet<PendingDismissData>();
     private List<View> mAnimatedViews = new LinkedList<View>();
     private int mDismissAnimationRefCount;
 
